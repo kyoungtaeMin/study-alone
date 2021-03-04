@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    // 함수를 만듬
+    var add = new Function("x, y", "return x + y + '<br/>'");
+    document.write(add(3, 4));
+
+    var add_ = function(a, b) {
+      return a + b + "<br/>";
+    };
+    document.write(add_(5, 10));
+
+    function _add(i, j) {
+      return i + j + "<br/>";
+    }
+    document.write(_add(4, 8));
+
+    // 함수의 인자 (Parameter of Function)
+
+    function _add(i, j) {
+
+      alert(arguments[5]); // hello 가 출력된다.
+      alert(typeof arguments[5]); // string 이 출력된다.
+
+      return i + j + "<br/>";
+    }
+    document.write(_add(3, 8, 6, 7, 5, "hello"));
+    // 값이 몇 개가 입력 되더라도 function 내부의 argument에 의해서 출력에는 이상없음.
+
+  </script>  
+</body>
+</html>

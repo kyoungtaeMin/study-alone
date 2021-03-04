@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    
+    // if 문 , for 문, while 문
+
+    var ar = [ "hello", "hi", "greeting"];
+    var ob = { id : 1, title : "hello", writeId : "newlec"};
+
+    for( var i = 0; i < ar.length; i++)
+      document.write( ar[ i ] + "<br />");
+
+    for( var n in ob )
+    document.write( n + "<br />"); // key 추출은 n
+
+    for( var n in ob )
+    document.write( ob[ n ] + "<br />"); // value 추출은 ob[ n ]
+  </script>
+</body>
+</html>

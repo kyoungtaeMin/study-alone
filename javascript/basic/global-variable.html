@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    
+    var a = 1; 
+    alert(a); // 1 출력
+
+    alert(a);
+    var a = 1; // undefined 출력
+    
+    b = 1; 
+    alert(b); // 1 출력
+
+    alert(b);
+    b = 1; // undefined 출력
+
+    var c = 1;
+    var c = 2;
+    alert(c); // 2 출력
+
+    {
+      var d = 1;
+    }
+    alert(d); // 1 출력 --javascript에서는 중괄호가 변수 영역을 나누지 않음.  
+
+    function f1() {
+      var e = 1;
+    }
+    f1();
+    alert(e); // error --유일하게 지역변수로 사용되는 변수는 function 안에서!!
+
+    function f2() {
+      f = 1;
+    }
+    f2();
+    alert(f); // 1 출력
+
+  </script>
+</body>
+</html>

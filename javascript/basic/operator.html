@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    var x = 3;
+    var y = 3; // 같은 값과 주소를 가진다.
+
+    // console.log(); // 개발자도구에 출력
+    // alert(); // 알림창에 출력
+    document.write( x == y ); // 문서에 출력
+    document.write( x === y );
+
+    //  다른 주소로 새로운 참조변수를 만들고 싶을때
+
+    var a = 1;
+    var b = new Number( 1 );
+
+    document.write( a == b );
+    document.write( a === b );
+
+    document.write( 3.5 - "2"); // 빼기 연산자에서는 문자를 숫자로 컴파일해준다.
+
+    document.write( "32" > "4"); // false
+    document.write( 32 > "4"); // true
+
+
+  </script>
+</body>
+</html>
