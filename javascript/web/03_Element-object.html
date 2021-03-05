@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- html 의 tag 들을 browser 가 읽게되면 memory 상에 javascript 가
+  이용 할 수 있게 객체(object)로 올려 놓는다. 이때, tag 라는 개념을 element object 라고한다
+  text = text node object
+  tag = element node object
+  주석(comment) = comment node object
+  모두 javascript 의 재료가 되고 이를 통해 사용자의 화면이 달라지게 된다.
+  반대로 사용자에 의해 object 의 속성이 바뀌거나 할 수 있다.-->
+
+  <script>
+    function printResult()
+    {
+      var x = prompt("x 값을 입력하세요", 0);
+      var y = prompt("y 값을 입력하세요", 0);
+
+      x = parseInt(x);
+      y = parseInt(y);
+
+      //alert(x + y);
+      btnPrint.value = x + y; // value 의 값을 바꿈
+      //span1.value = x + y; --error!!
+      //span1.innerText = x + y; // text 의 값을 바꿈
+      //btnPrint.type = "text" // type 의 값을 바꿈
+    }
+    btnPrint.onclick = printResult;
+    // script 내에서 function 을 대입 할 때는 ()를 사용하면 안된다.
+    // function(); 를 하게 되면 바로 호출이 되므로 사용하지 않는다.
+    // 같은 body 안에 있을때는 문제없이 실행되지만 head 로 옮기면 error 발생
+    // input 을 읽고 나서 정의가 되는 문장이지만 
+    //input 을 읽기 전에 실행이 되므로 error가 발생한다.
+  </script>
+</head>
+<body>
+
+  <input type="button" value="클릭" id="btnPrint" /><br />
+  <!-- 함수에 의해 계산된 값으로 value 의 값이 바뀐다. ('클릭' -> 'x + y') -->
+  <span id="span1">스팬입니다</span>
+  <!-- value 가 없기 때문에 위와 똑같이 하면 error 발생. 이 때는 text를 바꿔줘야한다.-->
+
+</body>
+</html>
