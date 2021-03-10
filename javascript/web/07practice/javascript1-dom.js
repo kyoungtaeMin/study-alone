@@ -1,10 +1,102 @@
+//EX10 : Multiple element selection and batch deletion
+window.addEventListener("load", function() {
+
+  var section10 = document.querySelector("#section10");
+
+  var noticeList = section10.querySelector(".notice-list");
+  var tbodyNode = noticeList.querySelector("tbody");
+  var allCheckBox = section10.querySelector(".overall");
+  var delBtn = section10.querySelector(".del-btn");
+  var swapBtn = section10.querySelector(".swap-btn");
+
+  allCheckBox.onchange = function() {
+
+    var inputs = tbodyNode.querySelectorAll("input[type='checkbox']");
+
+    for(var i=0; i<inputs.length; i++) {
+      inputs[i].checked = allCheckBox.checked;
+    }
+  }
+
+  delBtn.onclick = function() {
+    var inputs = tbodyNode.querySelectorAll("input[type='checkbox']:checked");
+    //console.log(inputs.length);
+    
+    for(var i=0; i<inputs.length; i++ ) {
+      inputs[i].parentElement.parentElement.remove();
+    }
+  }
+
+  swapBtn.onclick = function() {
+
+  var inputs = tbodyNode.querySelectorAll("input[type='checkbox']:checked");
+
+  if(inputs.length != 2) {
+    alert("두 개만 선택해야 합니다.");
+    return;
+  }
+  var trs = [];
+  for(var i=0; i<inputs.length; i++) {
+    trs.push(inputs[i].parentElement.parentElement);
+
+  }
+  var cloneNode = trs[0].cloneNode(true);
+  trs[1].replaceWith(cloneNode);
+  trs[0].replaceWith(trs[1]);
+  
+  }
+
+
+});
+
+//EX9 : Node insertion and node traversal
+window.addEventListener("load", function() {
+
+  var section9 = document.querySelector("#section9");
+
+  var noticeList = section9.querySelector(".notice-list");
+  var tbodyNode = noticeList.querySelector("tbody");
+  var upBtn = section9.querySelector(".up-btn");
+  var downBtn = section9.querySelector(".down-btn");
+
+  var currentNode = tbodyNode.firstElementChild;
+  
+  downBtn.onclick = function() {
+    
+    var nextNode = currentNode.nextElementSibling;
+    
+    if(nextNode == null) {
+      alert("더 이상 이동할 수 없습니다.");
+      return;
+    }
+    //tbodyNode.removeChild(nextNode); //없어도 된다
+    //tbodyNode.insertBefore(nextNode, currentNode);
+    currentNode.insertAdjacentElement("beforeBegin", nextNode)
+    // 테이블 행 이동은 이거 하나로 끝난다...
+  }
+  
+  upBtn.onclick = function() {
+    
+    var prevNode = currentNode.previousElementSibling;
+
+    if(prevNode == null) {
+      alert("더 이상 이동할 수 없습니다.")
+      return;
+    }
+    //tbodyNode.removeChild(currentNode); // 너도 없어도 됬구나
+    //tbodyNode.insertBefore(currentNode, prevNode);
+    // insert에는 Before 밖게 없다...ㅜㅜ 그래서 삭제되는 Node를 조정해줘야 한다.
+    currentNode.insertAdjacentElement("afterend", prevNode);
+  }
+});
+
 //EX8 : Node cloning and Template tagging
 window.addEventListener("load", function() {
   var notices = [
     {id : 5, title : "빅데이터 재밌니?", regDate : "2021-03-05", writerId : "min", hit : 54},
     {id : 6, title : "개발자는 어떠냐?", regDate : "2021-03-04", writerId : "min", hit : 22}
   ];
-  var section = document.querySelector("#section8");
+  var section8 = document.querySelector("#section8");
 
   var noticeList = section8.querySelector(".notice-list");
   var tbodyNode = noticeList.querySelector("tbody");
