@@ -1,10 +1,77 @@
+//EX11 : Sorting records by column clicked 1
+window.addEventListener("load", function() {
+  
+  var notices = [
+    {"id" : 1, "title" : "Javascript란...", "regDate" : "2021-03-09", "writerId" : "min", "hit" : 2},
+    {"id" : 2, "title" : "Python만 배우면 될줄 알았는데...ㅜㅜ", "regDate" : "2021-03-08", "writerId" : "yoen", "hit" : 7},
+    {"id" : 3, "title" : "기본기가 튼튼해야되", "regDate" : "2021-03-07", "writerId" : "moon", "hit" : 11},
+    {"id" : 4, "title" : "근데 너무 어려운거 아니냐", "regDate" : "2021-03-06", "writerId" : "joo", "hit" : 35}
+  ];
+
+  var section11 = document.querySelector("#section11");
+
+  var noticeList = section11.querySelector(".notice-list");
+  var titleId = section11.querySelector(".title");
+  var tbodyNode = noticeList.querySelector("tbody");
+
+  var bindData = function() {
+    var template = section11.querySelector("template");
+    
+    for(var i=0; i<notices.length; i++){
+
+    var cloneNode = document.importNode(template.content, true);
+    var tds = cloneNode.querySelectorAll("td");
+    tds[0].textContent = notices[i].id;
+
+    //tds[1].innerHTML = '<a href="'+ notices[0].id +'">'+ notices[0].title+"</a>";
+    
+    var aNode = tds[1].children[0];
+    aNode.href = notices[i].id;
+    aNode.textContent = notices[i].title;
+
+    tds[2].textContent = notices[i].regDate;
+    tds[3].textContent = notices[i].writerId;
+    tds[4].textContent = notices[i].hit;
+
+    tbodyNode.append(cloneNode);
+    }
+  }
+
+  bindData();
+
+  var titleSorted = false;
+
+  titleId.onclick = function() {
+    
+    tbodyNode.innerHTML = "";
+
+    if(titleSorted)
+      notices.sort(function(a, b){
+        titleSorted = true;
+        
+        if (a.title < b.title)
+          return -1;
+        else if (a.title > b.title)
+          return 1;
+        else
+          return 0;
+
+    });
+    else
+      notices.reverse();
+
+    bindData();
+
+  }
+});
+
 //EX10 : Multiple element selection and batch deletion
 window.addEventListener("load", function() {
 
   var section10 = document.querySelector("#section10");
 
   var noticeList = section10.querySelector(".notice-list");
-  var tbodyNode = noticeList.querySelector("tbody");
+  var tbody = noticeList.querySelector("tbody");
   var allCheckBox = section10.querySelector(".overall");
   var delBtn = section10.querySelector(".del-btn");
   var swapBtn = section10.querySelector(".swap-btn");

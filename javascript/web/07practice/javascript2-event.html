@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="javascript2-event.js"></script>
+</head>
+<body>
+  <header>
+    <a href="javascript1-dom.html">Javascript DOM 1</a>
+    <a href="javascript2-dom.html">Javascript DOM 2</a>
+  </header>
+
+  <section id="section2">
+    <h1> EX 2 : Handling user events using bubbling </h1>
+    <div class="img-list">
+        <img class="img" src="../images/김연아2.jpg" style="height: 100px;"/>
+        <img class="img" src="../images/김연아3.jpg" style="height: 100px;"/>
+        <img class="img" src="../images/김연아1.jpg" style="height: 100px;"/>
+    </div>
+    <div>
+      <img class="current-img" src="../images/김연아2.jpg" style="width: 200px; border: 2px solid pink;;" />
+    </div>
+  </section>
+
+  <section id="section1-1">
+    <h1>Practice Problem 1 : Remove selected recode</h1>
+    <table border="1px"; class="notice-list">
+      <thead>
+        <tr>
+          <td>번호</td>
+          <td>제목</td>
+          <td>작성일</td>
+          <td>작성자</td>
+          <td>조회수</td>
+          <td>관리</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><a href="1">자바스크립트</a></td>
+          <td>2021-03-11</td>
+          <td>min</td>
+          <td>10</td>
+          <td><input type="button" class="del-button" value="삭제"></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><a href="2">파이썬</a></td>
+          <td>2021-03-11</td>
+          <td>min</td>
+          <td>12</td>
+          <td><input type="button" class="del-button" value="삭제"></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><a href="3">머신러닝</a></td>
+          <td>2021-03-11</td>
+          <td>min</td>
+          <td>15</td>
+          <td><input type="button" class="del-button" value="삭제"></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><a href="4">딥러닝</a></td>
+          <td>2021-03-11</td>
+          <td>min</td>
+          <td>20</td>
+          <td><input type="button" class="del-button" value="삭제"></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <hr />
+  
+  <section id="section1">
+    <h1> EX 1 : Show selected image : Event target </h1>
+    <div>
+        <img class="img" src="../images/김연아1.jpg" style="height: 100px;"/>
+        <img class="img" src="../images/김연아2.jpg" style="height: 100px;"/>
+        <img class="img" src="../images/김연아3.jpg" style="height: 100px;"/>
+    </div>
+    <div>
+      <img class="current-img" src="../images/김연아1.jpg" style="width: 200px; border: 2px solid pink;;" />
+    </div>
+  </section>
+
+</body>
+</html>
