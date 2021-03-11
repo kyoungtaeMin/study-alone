@@ -1,0 +1,9 @@
+color site - color tools
+
+imoticon site - flaticon # 출처 링크를 첨부해야함
+
+icon site - font awesome # 스크립트 링크 걸어야함
+
+https://www.netlify.com/ # 도메인 오픈소스 주소(제공자 이름 포함 o)
+
+https://www.freenom.com # 도메인 오픈소스 주소(제공자 이름 포함 x) 12개월까지 무료
