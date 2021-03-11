@@ -1,1 +1,5 @@
-# study-alone
+# Python
+# SQL
+# Jacascript
+# Html
+# Css
