@@ -1,7 +1,7 @@
 // 1. Use strict
 // added in ES5
 // use this for Valina Javascript.
-"use strict"
+"use strict";
 
 // 2. Variable, rw(read/write)
 // let (added in ES6)
