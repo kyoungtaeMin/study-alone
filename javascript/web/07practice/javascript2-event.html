@@ -12,6 +12,179 @@
     <a href="javascript1-dom.html">Javascript DOM 1</a>
     <a href="javascript2-dom.html">Javascript DOM 2</a>
   </header>
+  <hr />
+
+  <section id="section5">
+    <style>
+      .file-button{
+        display: none;
+      }
+      .file-trigger{
+        background: navy;
+        border: 1px solid lightblue;
+        border-radius: 5px;
+
+        padding: 5px 10px;
+        color: white;
+        cursor: pointer;
+      }
+      .file-trigger:hover{
+        background: rgb(169, 169, 238);
+      }
+    </style>
+    <h1>EX 5 : Implementing Trigger</h1>
+    <input type="file" class="file-button">
+    <span class="file-trigger">파일선택</span>
+  </section>
+  <hr />
+
+  <section id="section4-2">
+    <h1> EX 4-2 : Blocking the element's basic behavior </h1>
+    <table border="1px"; class="notice-list">
+      <thead>
+        <tr>
+          <td>번호</td>
+          <td>제목</td>
+          <td>작성일</td>
+          <td>작성자</td>
+          <td>조회수</td>
+          <td>관리</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><a href="1">자바스크립트</a></td>
+          <td>2021-03-11</td>
+          <td>min</td>
+          <td>10</td>
+          <td>
+            <a href="" class="sel-button">선택</a>
+            <a href="" class="edit-button">수정</a>
+            <a href="" class="del-button">삭제</a>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><a href="2">파이썬</a></td>
+          <td>2021-03-11</td>
+          <td>min</td>
+          <td>12</td>
+          <td>
+            <input type="button" class="sel-button" value="선택">
+            <input type="button" class="edit-button" value="수정">
+            <input type="button" class="del-button" value="삭제">
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><a href="3">머신러닝</a></td>
+          <td>2021-03-11</td>
+          <td>min</td>
+          <td>15</td>
+          <td>
+            <input type="button" class="sel-button" value="선택">
+            <input type="button" class="edit-button" value="수정">
+            <input type="button" class="del-button" value="삭제">
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><a href="4">딥러닝</a></td>
+          <td>2021-03-11</td>
+          <td>min</td>
+          <td>20</td>
+          <td>
+            <input type="button" class="sel-button" value="선택">
+            <input type="button" class="edit-button" value="수정">
+            <input type="button" class="del-button" value="삭제">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <hr />
+
+  <section id="section4-1">
+    <h1> EX 4-1 : Handling events of buttons with different functions </h1>
+    <table border="1px"; class="notice-list">
+      <thead>
+        <tr>
+          <td>번호</td>
+          <td>제목</td>
+          <td>작성일</td>
+          <td>작성자</td>
+          <td>조회수</td>
+          <td>관리</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><a href="1">자바스크립트</a></td>
+          <td>2021-03-11</td>
+          <td>min</td>
+          <td>10</td>
+          <td>
+            <input type="button" class="button sel-button aa bb" value="선택">
+            <input type="button" class="edit-button" value="수정">
+            <input type="button" class="del-button" value="삭제">
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><a href="2">파이썬</a></td>
+          <td>2021-03-11</td>
+          <td>min</td>
+          <td>12</td>
+          <td>
+            <input type="button" class="sel-button" value="선택">
+            <input type="button" class="edit-button" value="수정">
+            <input type="button" class="del-button" value="삭제">
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><a href="3">머신러닝</a></td>
+          <td>2021-03-11</td>
+          <td>min</td>
+          <td>15</td>
+          <td>
+            <input type="button" class="sel-button" value="선택">
+            <input type="button" class="edit-button" value="수정">
+            <input type="button" class="del-button" value="삭제">
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><a href="4">딥러닝</a></td>
+          <td>2021-03-11</td>
+          <td>min</td>
+          <td>20</td>
+          <td>
+            <input type="button" class="sel-button" value="선택">
+            <input type="button" class="edit-button" value="수정">
+            <input type="button" class="del-button" value="삭제">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <hr />
+
+  <section id="section3">
+    <h1> EX 3 : Stop event bubbling </h1>
+    <div class="img-list">
+        <img class="img" src="../images/김연아2.jpg" style="height: 100px;"/>
+        <img class="img" src="../images/김연아3.jpg" style="height: 100px;"/>
+        <img class="img" src="../images/김연아1.jpg" style="height: 100px;"/>
+        <input class="add-button" type="button" value="추가" />
+    </div>
+    <div>
+      <img class="current-img" src="../images/김연아2.jpg" style="width: 200px; border: 2px solid pink;;" />
+    </div>
+  </section>
+  <hr />
 
   <section id="section2">
     <h1> EX 2 : Handling user events using bubbling </h1>
@@ -24,6 +197,7 @@
       <img class="current-img" src="../images/김연아2.jpg" style="width: 200px; border: 2px solid pink;;" />
     </div>
   </section>
+  <hr />
 
   <section id="section1-1">
     <h1>Practice Problem 1 : Remove selected recode</h1>
