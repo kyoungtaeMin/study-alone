@@ -23,13 +23,15 @@
 #   - 합리적인 기본값 : 모델이 사용자 지정 파라미터를 필요로 할 때 라이브러리가 적절한 기본값을 정의
 
 # API 사용 방법
-#   - Scikit-Learn으로 부터 적절한 estimator 클래스를 임포트해서 모델의 클래스 선택
-#   - 클래스를 원하는 값으로 인스턴스화해서 모델의 하이퍼파라미터 선택
-#   - 데이터를 특징 배열과 대상 벡터로 배치
-#   - 모델 인스턴스의 fit() 메서드를 호출해 모델을 데이터에 적합
-#   - 모델을 새 데이터에 대해서 적용
+#   1. Scikit-Learn으로 부터 적절한 estimator 클래스를 임포트해서 모델의 클래스 선택
+#   2. 클래스를 원하는 값으로 인스턴스화해서 모델의 하이퍼파라미터 선택
+#   3. 데이터를 특징 배열과 대상 벡터로 배치
+#   4. 모델 인스턴스의 fit() 메서드를 호출해 모델을 데이터에 적합
+#   5. 모델을 새 데이터에 대해서 적용
 #     - 지도 학습 : 대체로 predict() 메서드를 사용해 알려지지 않은 데이터에 대한 레이블 예측
 #     - 비지도 학습 : 대체로 transform() 이나, predict() 메서드를 사용해 데이터의 속성을 변환하거나 추론
+
+# 적절한 estimator 클래스를 임포트해서 모델의 클래스 선택
 from sklearn.linear_model import LinearRegression
 import numpy as np
 import matplotlib.pyplot as plt
@@ -38,7 +40,23 @@ plt.style.use(['seaborn-whitegrid'])
 x = 10 * np.random.rand(50)
 y = 2 * x + np.random.rand(50)
 plt.scatter(x, y)
-# 적절한 estimator 클래스를 임포트해서 모델의 클래스 선택
+
 # 클래스를 원하는 값으로 인스턴스화해서 모델의 하이퍼파라미터 선택
 model = LinearRegression(fit_intercept=True)
 model
+# 데이터를 특징 배열과 대상 벡터로 배치
+x
+X = x[:, np.newaxis]
+X
+# 모델 인스턴스의 fit() 메서드를 호출해 모델을 데이터에 적합
+model.fit(X, y)
+model.coef_
+model.intercept_
+# 모델을 새 데이터에 대해서 적용
+xfit = np.linspace(-1, 11)
+Xfit = xfit[:, np.newaxis]
+yfit = model.predict(Xfit)
+plt.scatter(x, y)
+plt.plot(xfit, yfit, '--r')
+
+# 25m 28s
