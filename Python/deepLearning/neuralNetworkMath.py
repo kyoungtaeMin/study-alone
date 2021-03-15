@@ -76,7 +76,6 @@ def func(x):
     c = 10
     return a*(x**2) + (b*x) + c
 
-
 x = np.arange(-10, 10, 0.1)
 y = func(x)
 

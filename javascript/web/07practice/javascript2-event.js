@@ -1,3 +1,164 @@
+// // EX 10 : Using the coordimates of the offset area of the box
+// window.addEventListener("load", function(){
+//   let section = document.querySelector('#section10');
+//   let container = section.querySelector('.container');
+//   let status = section.querySelector('.status');
+//   let dragging = false;
+//   let offset = {x: 0, y: 0}
+//   let current = null;
+//   let left = container.offsetLeft;
+//   let top = container.offsetTop;
+
+//   console.log(left);
+//   console.log(top);
+
+//   section.onmousedown = function(e){
+//     if (e.target.classList.contains('box')){
+//       dragging = true;
+//       current = e.target;
+//       offset.x = e.offsetX;
+//       offset.y = e.offsetY;
+//     }
+//   };
+
+//   section.onmousemove = function(e){
+//     if (!dragging) return;
+
+//     let x = (e.pageX*0.063)-(offset.x*0.063) - (left*0.063);
+//     let y = (e.pageY*0.063)-(offset.y*0.063) - (top*0.063);
+
+//     current.style.left = x+"rem";
+//     current.style.top = y+"rem";
+
+//     status.innerText = `(x, y): ${x}, ${y}`;
+//   };
+
+//   section.onmouseup = function(e){
+//     dragging = false;
+//   };
+
+// });
+
+// EX 9 : Using the coordimates of the offset area of the box
+window.addEventListener("load", function(){
+  let section = document.querySelector('#section9');
+  let container = section.querySelector('.container');
+  let status = section.querySelector('.status');
+  let dragging = false;
+  let offset = {x: 0, y: 0}
+  let current = null;
+  let left = container.offsetLeft;
+  let top = container.offsetTop;
+
+  console.log(left);
+  console.log(top);
+
+  section.onmousedown = function(e){
+    if (e.target.classList.contains('box')){
+      dragging = true;
+      current = e.target;
+      offset.x = e.offsetX;
+      offset.y = e.offsetY;
+    }
+  };
+
+  section.onmousemove = function(e){
+    if (!dragging) return;
+
+    let x = (e.pageX*0.063)-(offset.x*0.063) - (left*0.063);
+    let y = (e.pageY*0.063)-(offset.y*0.063) - (top*0.063);
+
+    current.style.left = x+"rem";
+    current.style.top = y+"rem";
+
+    status.innerText = `(x, y): ${x}, ${y}`;
+  };
+
+  section.onmouseup = function(e){
+    dragging = false;
+  };
+
+});
+
+// EX 8 : Mouse coordinates: Dragging multiple boxes to move
+window.addEventListener("load", function(){
+  let section = document.querySelector('#section8');
+  let container = section.querySelector('.container');
+  let box = section.querySelector('.box');
+  let dragging = false;
+  let offset = {x: 0, y: 0}
+  let current = null;
+
+  container.onmousedown = function(e){
+    if (e.target.classList.contains('box')){
+      dragging = true;
+      current = e.target;
+      offset.x = e.offsetX;
+      offset.y = e.offsetY;
+    }
+  };
+
+  container.onmousemove = function(e){
+    if (!dragging) return;
+    current.style.left = (e.pageX*0.063)-(offset.x*0.063)+"rem";
+    current.style.top = (e.pageY*0.063)-(offset.y*0.063)+"rem";
+  };
+
+  container.onmouseup = function(e){
+    dragging = false;
+  };
+
+});
+
+// EX 7 : Mouse coordinates: Move a box by dragging
+window.addEventListener("load", function(){
+  let section = document.querySelector('#section7');
+  let container = section.querySelector('.container');
+  let box = section.querySelector('.box');
+  let dragging = false;
+  let offset = {x: 0, y: 0}
+
+  container.onmousedown = function(e){
+    if (e.target === box)
+      dragging = true;
+  };
+
+  container.onmousemove = function(e){
+    if (!dragging) return;
+    box.style.left = (e.pageX*0.063)-(offset.x*0.063)+"rem";
+    box.style.top = (e.pageY*0.063)-(offset.y*0.063)+"rem";
+  };
+
+  container.onmouseup = function(e){
+    dragging = false;
+  };
+
+  box.onmousedown = function(e){
+    offset.x = e.offsetX;
+    offset.y = e.offsetY;
+  };
+
+});
+
+// EX 6 : Mouse coordinates: Move the box to the click position
+window.addEventListener("load", function(){
+  let section = document.querySelector('#section6');
+  let container = section.querySelector('.container');
+  let box = section.querySelector('.box');
+
+  container.onclick = function(e){
+    // e.x, e.y / e.offsetX, e.offsetY, e.clientX, e.pageX... 좌표도 다양하다..
+    console.log(`(x, y): ${e.x}, ${e.y}`);
+    console.log(`(client x, y): ${e.clientX}, ${e.clientY}`);
+    console.log(`(page x, y): ${e.pageX}, ${e.pageY}`);
+    console.log(`(offset x, y): ${e.offsetX}, ${e.offsetY}`);
+    box.style.position = "absolute";
+    box.style.left = e.x*0.063+"rem";
+    box.style.top = e.y*0.063+"rem";
+  };
+
+});
+
 // EX 5 : Implementing trigger
 window.addEventListener("load", function(){
 
