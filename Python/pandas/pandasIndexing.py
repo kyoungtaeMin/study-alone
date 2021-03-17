@@ -41,6 +41,38 @@ s.iloc[2: 4]
 s.reindex(range(10)) # index 다시 함. 비어있는 칸은 NaN로 채워짐
 s.reindex(range(10), method='bfill') # 비어있는 칸을 뒤에 위치한 값들로 채움
 
+pop_tuple = {'서울특별시': 9720846,
+             '부산광역시': 3404423,
+             '인천광역시': 2947217,
+             '대구광역시': 2427954,
+             '대전광역시': 1471040,
+             '광주광역시': 1455048}
+population = pd.Series(pop_tuple)
+population
+
+male_tuple = {'서울특별시': 4732275,
+              '부산광역시': 1668618,
+              '인천광역시': 1476813,
+              '대구광역시': 1198815,
+              '대전광역시': 734441,
+              '광주광역시': 720060}
+male = pd.Series(male_tuple)
+male
+
+female_tuple = {'서울특별시': 4988571,
+                '부산광역시': 1735805,
+                '인천광역시': 1470404,
+                '대구광역시': 1229139,
+                '대전광역시': 736599,
+                '광주광역시': 734988}
+female = pd.Series(female_tuple)
+female
+
+korea_df = pd.DataFrame({'총인구수': population,
+                         '남자인구수': male,
+                         '여자인구수': female})
+korea_df
+
 #  - DataFrame
 
 korea_df
@@ -103,7 +135,7 @@ male_tuples = [5111259, 4732275,
               721780, 720060]
 male_tuples
 korea_mdf = pd.DataFrame({'총인구수': population,
-                         '남자인구수': male_tuple})
+                         '남자인구수': male_tuples})
 korea_mdf
 
 female_tuples = [5201286, 4988571,
@@ -127,4 +159,71 @@ korea_mdf = pd.DataFrame({'총인구수': population,
                           '남여비율': ratio})
 korea_mdf
 
-# 56m 18s
+# 다중 인덱싱 생성
+
+df = pd.DataFrame(np.random.rand(6, 3),
+                  index = [['a', 'a', 'b', 'b', 'c', 'c'],
+                           [1, 2, 1, 2, 1, 2]],
+                  columns = ['c1', 'c2', 'c3'])
+df
+
+pd.MultiIndex.from_arrays([['a', 'a', 'b', 'b', 'c', 'c'],
+                           [1, 2, 1, 2, 1, 2]])
+pd.MultiIndex.from_tuples([('a', 1), ('a', 2), ('b', 1), ('b', 2), ('c', 1), ('c', 2)])
+# MultiIndex에 적용하는 대상에 따라서 arrays, tuples를 구분해서 입력
+
+pd.MultiIndex.from_product([['a', 'b', 'c'], [1, 2]])
+# product는 두 배열이 곱한 형태로 indexing
+
+pd.MultiIndex(levels = [['a', 'b', 'c'], [1, 2]],
+              codes = [[0, 0, 1, 1, 2, 2], [0, 1, 0, 1, 0, 1]])
+
+population
+population.index.names = ['행정구역', '년도']
+population
+
+idx = pd.MultiIndex.from_product([['a', 'b', 'c'], [1, 2]],
+                                 names= ['name1', 'name2'])
+cols = pd.MultiIndex.from_product([['c1', 'c2', 'c3'], [1, 2]],
+                                  names= ['col_name1', 'col_name2'])
+data = np.round(np.random.randn(6, 6), 2)
+mdf = pd.DataFrame(data, index=idx, columns=cols)
+mdf
+mdf['c2']
+
+# 인덱싱 및 슬라이싱
+population['대전광역시', 2020]
+population[:, 2020]
+population[population > 3000000]
+population[['대구광역시', '대전광역시']]
+mdf['c2', 1]
+mdf.iloc[:3, :4]
+mdf.loc[:, ('c2', 1)]
+
+idx_slice = pd.IndexSlice
+mdf.loc[idx_slice[:, 2], idx_slice[:, 2]]
+
+# 다중 인덱스 재정렬
+idx
+korea_mdf.index.names = ['행정구역', '년도']
+korea_mdf
+# korea_mdf['서울특별시': '인천광역시']  - index가 정렬이 되지 않아서 error
+korea_mdf = korea_mdf.sort_index()
+korea_mdf
+korea_mdf['서울특별시': '인천광역시'] # 정렬 후 정상 작동
+
+korea_mdf.unstack(level= 0)
+korea_mdf.unstack(level= 1)
+
+korea_mdf.stack()
+korea_mdf
+
+idx_flat = korea_mdf.reset_index(level= 0)
+idx_flat
+idx_flat = korea_mdf.reset_index(level= (0, 1))
+idx_flat
+idx_flat.set_index(['행정구역', '년도'])
+
+# 데이터 연산
+
+# 1h 13m 59s
