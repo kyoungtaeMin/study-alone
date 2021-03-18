@@ -10,32 +10,67 @@
 # - 플랫 파일(CSV 및 구분), Excel 파일, 데이터베이스 로딩 및 초고속 HDF5 형식의 데이터 저장/로드에 사용되는 강령한 IO도구
 # - 시계열 특정 기능 : 날짜 범위 생성 및 주파수 변환, 무빙 윈도우(moving window) 통계, 날짜 이동 및 지연
 # - NumPy를 기반으로 만들어짐
+
+# %%
+from IPython import get_ipython
 import numpy as np
 import pandas as pd
 
 # Pandas Objects
 
 #  Series Object
+
+# %%
 s = pd.Series([0, 0.25, 0.5, 0.75, 1.0])
 s
+
+# %%
 s.values
+
+# %%
 s.index
+
+# %%
 s[1]
+
+# %%
 s[1:3]
+
+# %%
 s = pd.Series([0, 0.25, 0.5, 0.75, 1.0],
               index=['a', 'b', 'c', 'd', 'e'])
 s
+
+# %%
 s['c']
+
+# %%
 s[['c', 'd', 'e']]
+
+# %%
 'b' in s
+
+# %%
 s = pd.Series([0, 0.25, 0.5, 0.75, 1.0],
               index=[2, 5, 6, 7, 9])
 s
+
+# %%
 s[7]
+
+# %%
 s[2:]
+
+# %%
 s.unique()
+
+# %%
 s.value_counts()
+
+# %%
 s.isin([0.25, 0.75, 0.7])
+
+# %%
 pop_tuple = {'서울특별시': 9720846,
              '부산광역시': 3404423,
              '인천광역시': 2947217,
@@ -44,15 +79,25 @@ pop_tuple = {'서울특별시': 9720846,
              '광주광역시': 1455048}
 population = pd.Series(pop_tuple)
 population
+
+# %%
 population['대전광역시']
+
+# %%
 population['대구광역시': '광주광역시']
 
 # DataFrame Object
+
+# %%
 pd.DataFrame([{'A': 2, 'B': 4, 'D': 6},
               {'A': 3, 'B': 6, 'C': 9}])
+
+# %%
 pd.DataFrame(np.random.rand(5, 5),
              columns=['a', 'b', 'c', 'd', 'e'],
              index=[1, 2, 3, 4, 5])
+
+# %%
 male_tuple = {'서울특별시': 4732275,
               '부산광역시': 1668618,
               '인천광역시': 1476813,
@@ -61,6 +106,8 @@ male_tuple = {'서울특별시': 4732275,
               '광주광역시': 720060}
 male = pd.Series(male_tuple)
 male
+
+# %%
 female_tuple = {'서울특별시': 4988571,
                 '부산광역시': 1735805,
                 '인천광역시': 1470404,
@@ -69,22 +116,44 @@ female_tuple = {'서울특별시': 4988571,
                 '광주광역시': 734988}
 female = pd.Series(female_tuple)
 female
+
+# %%
 korea_df = pd.DataFrame({'총인구수': population,
                          '남자인구수': male,
                          '여자인구수': female})
 korea_df
+
+# %%
 korea_df.index
+
+# %%
 korea_df.columns
+
+# %%
 korea_df['여자인구수']
+
+# %%
 korea_df['서울특별시': '대전광역시']
 
 # Index Object
+
+# %%
 idx = pd.Index([2, 4, 6, 8, 10])
 idx
+
+# %%
 idx[1]
+
+# %%
 idx[0:4:2]
+
+# %%
 idx[-1::]
+
+# %%
 idx[::2]
+
+# %%
 print(idx)
 print(idx.size)
 print(idx.shape)
