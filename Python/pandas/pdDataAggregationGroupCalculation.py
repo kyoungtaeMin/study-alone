@@ -77,7 +77,9 @@ df['B'].unique()
 df['A'].value_counts()
 
 
+# %%
 # Group by 연산
+
 
 # %%
 df = pd.DataFrame({'c1': ['a', 'a', 'b', 'b', 'c', 'd', 'b'],
@@ -156,6 +158,126 @@ top(df, n=5)
 # %%
 df.groupby('c1').apply(top)
 
-# %%
 
-# 2h 35m 00s
+# %%
+# 피벗 테이블 (Pivot Table)
+
+
+# %%
+df.pivot_table(['c3', 'c4'],
+               index=['c1'],
+               columns=['c2'])
+
+# %%
+df.pivot_table(['c3', 'c4'],
+               index=['c1'],
+               columns=['c2'],
+               margins=True)
+
+# %%
+df.pivot_table(['c3', 'c4'],
+               index=['c1'],
+               columns=['c2'],
+               margins=True,
+               aggfunc=sum)
+
+# %%
+df.pivot_table(['c3', 'c4'],
+               index=['c1'],
+               columns=['c2'],
+               margins=True,
+               aggfunc=sum,
+               fill_value=0)
+
+# %%
+pd.crosstab(df.c1, df.c2)
+
+# %%
+pd.crosstab(df.c1, df.c2, values=df.c3, aggfunc=sum, margins=True)
+
+
+# %%
+# 범주형 (Categorical) 데이터
+
+
+# %%
+s = pd.Series(['c1', 'c2', 'c1', 'c2', 'c1']* 2)
+s
+
+# %%
+pd.unique(s)
+
+# %%
+pd.value_counts(s)
+
+# %%
+code = pd.Series([0, 1, 0, 1, 0]* 2)
+code
+
+# %%
+d = pd.Series(['c1', 'c2'])
+d
+
+# %%
+d.take(code)
+
+# %%
+df = pd.DataFrame({'id': np.arange(len(s)),
+                   'c': s,
+                   'v': np.random.randint(1000, 5000, size=len(s))})
+df
+
+# %%
+c = df['c'].astype('category')
+c
+
+# %%
+c.values
+
+# %%
+c.values.categories
+
+# %%
+c.values.codes
+
+# %%
+df['c'] = c
+df.c
+
+# %%
+c = pd.Categorical(['c1', 'c2', 'c3', 'c1', 'c2'])
+c
+
+# %%
+categories = ['c1', 'c2', 'c3']
+codes = [0, 1, 2, 0, 1]
+c = pd.Categorical.from_codes(codes, categories)
+c
+
+# %%
+pd.Categorical.from_codes(codes, categories, ordered=True)
+
+# %%
+c.as_ordered()
+
+# %%
+c.codes
+
+# %%
+c.categories
+
+# %%
+c = c.set_categories(['c1', 'c2', 'c3', 'c4', 'c5'])
+c.categories
+
+# %%
+c.value_counts()
+
+# %%
+c[c.isin(['c1', 'c3'])]
+
+# %%
+c = c.remove_unused_categories()
+c.categories
+
+# %%
